@@ -1,0 +1,12 @@
+@media print{
+    .print-break{
+        page-break-before: always;
+    }
+    #printsec{
+        visibility: hidden;
+    }
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+}

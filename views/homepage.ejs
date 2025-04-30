@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+    <div class="container-fluid text-center" style="padding: 1rem;">
+        <h2>Choose the option to use:</h2>
+        <div class="container-fluid text-center" style="padding: 1rem;">
+            <div class="row justify-content-md-center">
+                <div class="col-sm-3"  style="padding: 1rem;">
+                    <form action="/admin" method="get">
+                        <label for="admin">Admin Panel to add/modify clients or view invoice lists</label><br>
+                        <button type="submit" class="btn btn-primary btn-lg" id="admin">Admin Panel</button>
+                    </form>
+                </div>
+                <div class="col-sm-3"  style="padding: 1rem;">
+                    <form action="/utility" method="get">
+                        <label for="utility">Utility Panel to create or edit Invoices</label><br>
+                        <button type="submit" class="btn btn-primary btn-lg" id="utility">Utility Panel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<%- include('partials/footer') %>

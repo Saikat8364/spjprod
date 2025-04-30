@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+    <div class="container-fluid" style="padding: 1rem;">
+        <div class="container">
+            <form action="/invop_bdr" method="post">
+                <h2 class="text-center" name="hd" id="hd" value="Invoice Options By Date Range">Invoice Options By Date Range</h2>
+                <br>
+                <br>
+                <br>
+                <label for="inpbdt" class="form-label" style="font-weight: bold;">Enter Beginnging Date</label>
+                <input class="form-control" type="date" id="inpbdt" name="inpbdt">
+                <label for="inpedt" class="form-label" style="font-weight: bold;">Enter Ending Date</label>
+                <input class="form-control" type="date" id="inpedt" name="inpedt">
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        
+    </div>
+    <div class="container text-center">
+        <a href="/" class="btn btn-primary btn-lg">Go Home</a>
+        <a href="/invoice" class="btn btn-primary btn-lg">Go Back</a>
+    </div>
+
+
+<%- include('partials/footer') %>

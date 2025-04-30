@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+    <div class="container-fluid text-center" style="padding: 1rem;">
+        <h2>Admin Panel Options:</h2>
+        <div class="container-fluid text-center" style="padding: 1rem;">
+            <div class="row justify-content-md-center">
+                <div class="col-sm-3"  style="padding: 1rem;">
+                    <form action="/clients" method="get">
+                        <button type="submit" class="btn btn-primary btn-lg">Clients Panel</button>
+                    </form>
+                </div>
+                <div class="col-sm-3"  style="padding: 1rem;">
+                    <form action="/invoice" method="get">
+                        <button type="submit" class="btn btn-primary btn-lg">Invoice Panel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <a href="/" class="btn btn-primary btn-lg">Go Home</a>
+    </div>
+
+
+<%- include('partials/footer') %>

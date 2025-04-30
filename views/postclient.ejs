@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+<body>
+    <h1>Welcome to Client Details Page</h1>
+    <form action="/submit" method="post">
+        <label for="cid">Client ID: </label>
+        <input name="cid" value="<%= result[0].clientID%>" readonly>
+        <br>
+        <label for="cname">Client Name: </label>
+        <input name="cname" value="<%= result[0].clientName%>" readonly>
+        <br>
+        <label for="cadd">Client Address: </label>
+        <input name="cadd" value="<%= result[0].clientAddress%>" readonly>
+        <br>
+        <label for="cgstin">Client GSTIN: </label>
+        <input name="cgstin" value="<%= result[0].clientGSTIN%>" readonly>
+        <br>
+        <label for="crate">Client Rate: </label>
+        <input name="crate" value="<%= result[0].clientRate%>" readonly>
+        <br>
+        <label for="desc">Select Description: </label>
+        <select name="desc" id="desc">
+            <option value="go">Gold Ornaments</option>
+            <option value="rep">Repairing Ornaments</option>
+        </select>
+        <br>
+        <label for="weight">Enter Weight: </label>
+        <input type="text" name="weight">
+        <button type="submit">Submit Details</button>
+    </form>
+</body>
+</html>

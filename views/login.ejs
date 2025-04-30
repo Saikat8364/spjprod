@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+    <div class="container-fluid" style="padding: 1rem;">
+        <h2 class="text-center">Login</h2>
+        <div class="container" style="padding: 1rem;">
+            <form action="/login" method="post">
+                <label for="uname" class="form-label" style="font-weight: bold;">Username</label>
+                <input type="text" class="form-control" name="uname" id="uname">
+                <label for="pass" class="form-label" style="font-weight: bold;">Password</label>
+                <input type="password" class="form-control" name="pass" id="pass">
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary btn-lg">Login</button>
+            </form>
+        </div>
+    </div>
+
+
+
+<%- include('partials/footer') %>

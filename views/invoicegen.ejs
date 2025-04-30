@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+<body>
+    <div class=" container container-fluid">
+        <h1>Welcome to Invoice Generation</h1>
+        <form action="/postclient" method="post">
+        <label for="client">Select Client</label>
+        <select name="client" id="client">
+        <% for (var i=0;i<result.length;i++){ %>
+            <option value="<%= 'cl'+result[i].clientID %>"><%= result[i].clientName %></option>    
+        <%}%>
+        </select>
+        <button type="submit">Select Client</button>
+        </form>
+    </div>
+    
+    
+</body>
+</html>

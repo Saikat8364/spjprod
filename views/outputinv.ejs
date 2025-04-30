@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title><%= r[0].cname %>_SPJ-<%=r[0].rid%></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container-fluid" style="padding: 1rem;">
+            <div class="container-fluid text-center"  style="padding: 1rem;">
+                <h1 style="text-decoration: underline;">Suresh Paul and Jewellers</h1>
+                <br>
+                <br>
+                <%if(r[0].invtype=='dc'){%>
+                    <h3 style="text-decoration: underline;"><%='Delivery Challan'%></h3>
+                <%}else{%>
+                    <h3 style="text-decoration: underline;"><%='Approval Issue Voucher'%></h3>
+                <%}%>
+                <br>
+                <br>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 65%;">
+                            <h4>Company Name:</h4>
+                            <h4><b>Suresh Paul and Jewellers</b></h4>
+                            Address: <br>26/A, Panchanantala Lane, Bowbazar,<br> Kolkata - 700012
+                            <br>
+                            GSTIN: 19ARSPP1209P1Z0
+                        </th>
+                        <th style="font-size: 1rem; width: 35%;">
+                            <h5><b>Invoice No.:SPJ-<%=r[0].rid%></b></h5>
+                            <h5><b>Invoice Date: <%=date%></b></h5>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 65%;">
+                            <h4>Ship To:</h4>
+                            <h4><b><%= r[0].cname %></b></h4>
+                            Address: <br> <%= r[0].caddr %>
+                            <br>
+                            GSTIN: <%= r[0].cgstin %>
+                        </th>
+                        <th style="font-size: 1rem; width: 35%;">
+                            <h5><b>Issue Voucher No.:<%=r[0].ivno%></b></h5>
+                            <h5><b>Issue Voucher Date: <%=r[0].ivdate%></b></h5>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>Item Description</th>
+                        <th>Quantity (gms.)</th>
+                        <th>HSN Code</th>
+                        <th>Rate (per gm.)</th>
+                        <th>Amount (₹)</th>
+                        <th>CGST (₹)</th>
+                        <th>SGST (₹)</th>
+                        <th>IGST (₹)</th>
+                        <th>Total Amount (₹)</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <%var i = 1%>
+                    <%if(r[0].gorn!=''){%>
+                        <tr>
+                            <td><%=i%></td>
+                            <td>Gold Ornaments</td>
+                            <td><%=r[0].gorn%></td>
+                            <td>9988</td>
+                            <td><%=r[0].crate%></td>
+                            <td><%=r[0].mval%></td>
+                            <td><%=r[0].m_cgst%></td>
+                            <td><%=r[0].m_sgst%></td>
+                            <td><%=r[0].m_igst%></td>
+                            <td><%=r[0].m_total%></td>
+                        </tr>
+                        <%i++;%>
+                    <%}%>
+                    <%if(r[0].rep!=''){%>
+                        <tr>
+                            <td><%=i%></td>
+                            <td>Repairing Ornaments</td>
+                            <td><%=r[0].rep%></td>
+                            <td>9988</td>
+                            <td><%=r[0].creprate%></td>
+                            <td><%=r[0].rval%></td>
+                            <td><%=r[0].r_cgst%></td>
+                            <td><%=r[0].r_sgst%></td>
+                            <td><%=r[0].r_igst%></td>
+                            <td><%=r[0].r_total%></td>
+                        </tr>
+                    <%}%>
+                    <tr>
+                        <th colspan="2" style="text-align: center;">Total Weight</th>
+                        <th><%=r[0].totwt%></th>
+                        <th colspan="6" style="text-align: right;">Net Total Amount</th>
+                        <th>₹ <%=r[0].net_total%></th>
+                    </tr>
+                    <tr>
+                        <th colspan="10">Amount In Words: <%=r[0].in_words_rate%></th>
+                    </tr>
+                    <tr>
+                        <th colspan="10">Value of Ornaments (Market Rate: ₹<%=r[0].mrate%>/gm): ₹ <%=r[0].mcost%> (<%=r[0].in_words_price%>)</th>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <br>
+            <div class="container-fluid" style="text-align: right;">
+                <b>For Suresh Paul and Jewellers</b>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <p>Signature</p>
+            </div>
+        </div>
+        <br style="page-break-after: always;">
+        <div class="container-fluid print-break">
+            <br>
+            <div class="container-fluid" style="padding: 2rem; outline-style: solid;">
+                <h1 class="text-center" style="text-decoration: underline;">Suresh Paul and Jewellers</h1>
+                <h4 class="text-center"><b>26/A, Panchanantala Lane, Bowbazar,<br>Kolkata - 700012<br>GSTIN: 19ARSPP1209P1Z0</b></h4>
+                <br>
+                <br>
+                <h2 class="text-center" style="text-decoration: underline ;">Declaration</h2>
+                <br>
+                <br>
+                <p>
+                    This is to certify that we are dispatching gold ornaments to <b><u><%=r[0].cname%></u></b> through our job work Invoice No. <b><u>SPJ-<%=r[0].rid%></u></b> dated <b><u><%=date%></u></b>. The metal was received from <b><u><%=r[0].cname%></u></b> for job work purpose via Issue Voucher No. <b><u><%=r[0].ivno%></u></b> dated <b><u><%=r[0].ivdate%></u></b>.
+                </p>
+                <p>
+                    After manufacturing, the ornaments are being sent to the client. The total weight of the jewellery in the shipment is <b><u><%=r[0].totwt%> grams</u></b> and the value of the shipment is <b><u>₹ <%=r[0].mcost%> (<%=r[0].in_words_price%>).</u></b>
+                </p>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="container-fluid" style="text-align: right;">
+                    <b>For Suresh Paul and Jewellers</b>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <p>Signature</p>
+                </div>
+            </div>
+        <br>
+        <br>
+        <div class="container-fluid text-center" id="printsec">
+            <a id="printpagebutton" class="btn btn-primary" onclick="printpage()">Print/Save Invoice and Declaration</a>
+            <br>
+            <br>
+            <br>
+            <a id="gobackbtn" class="btn btn-primary" href="/utility">Go Back to Utility Screen</a>
+            <br>
+            <br>
+            <a id="gohomebtn" class="btn btn-primary" href="/"></i>Go Back to Home Screen</a>
+        </div>
+        </div>
+        <script type="text/javascript">
+            function printpage() {
+            window.print();
+        }
+        </script>
+<%- include('partials/footer') %>

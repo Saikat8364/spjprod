@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+    <div class="container-fluid" style="padding: 1rem;">
+        <h2 class="text-center">Add Client</h2>
+        <div class="container-fluid" style="padding: 1rem;">
+            <form action="/addclient" method="post">
+                <div class="container" style="padding: 5rem; align-items: center;">
+                    <div>
+                        <label for="cname" class="form-label" style="font-weight: bold;">Client Name</label>
+                        <input type="text" class="form-control" id="cname" name="cname">
+                    </div>
+                    <div>
+                        <label for="caddr" class="form-label" style="font-weight: bold;">Client Address</label>
+                        <input type="text" class="form-control" id="caddr" name="caddr">
+                    </div>
+                    <div>
+                        <label for="cgstin" class="form-label" style="font-weight: bold;">Client GSTIN</label>
+                        <input type="text" class="form-control" id="cgstin" name="cgstin">
+                    </div>
+                    <div>
+                        <label for="crate" class="form-label" style="font-weight: bold;">Client Manufacturing Rate</label>
+                        <input type="number" class="form-control" id="crate" name="crate">
+                    </div>
+                    <div>
+                        <label for="creprate" class="form-label" style="font-weight: bold;">Client Repairing Rate</label>
+                        <input type="number" class="form-control" id="creprate" name="creprate">
+                    </div>
+                    <div>
+                        <label for="cgsttype" style="font-weight: bold;">Client GST Type:</label>
+                            <select name="cgsttype" id="cgsttype" class="form-control">
+                                <option value="igst">IGST</option>
+                                <option value="cs">CGST/SGST</option>
+                            </select>
+                    </div>
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>  
+            </form>
+        </div>
+    </div>
+    <div class="container text-center">
+        <a href="/" class="btn btn-primary btn-lg">Go Home</a>
+        <a href="/clients" class="btn btn-primary btn-lg">Go Back</a>
+    </div>
+
+
+
+<%- include('partials/footer') %>

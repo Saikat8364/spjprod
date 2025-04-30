@@ -1,0 +1,92 @@
+<%- include('partials/header') %>
+    <div class="container-fluid" style="padding: 1rem;">
+        <h2 style="text-align: center;">Provide Invoice Details</h2>
+        <div class="container-fluid" style="padding: 1rem;">
+            <form action="/invdetailssubmit" method="post">
+                <div class="container" style="align-items: center;">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="rid" class="form-label" style="font-weight: bold;">New Invoice ID</label>
+                            <input type="text" class="form-control" id="rid" name="rid" value="<%= i %>" readonly>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="cid" class="form-label" style="font-weight: bold;">Client ID</label>
+                            <input type="text" class="form-control" id="cid" name="cid" value="<%= result[0].clientsid %>" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="cname" class="form-label" style="font-weight: bold;">Client Name</label>
+                            <input type="text" class="form-control" id="cname" name="cname" value="<%= result[0].cname %>" readonly>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="caddr" class="form-label" style="font-weight: bold;">Client Address</label>
+                        <input type="text" class="form-control" id="caddr" name="caddr" value="<%= result[0].caddress %>" readonly>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <label for="cgstin" class="form-label" style="font-weight: bold;">Client GSTIN</label>
+                            <input type="text" class="form-control" id="cgstin" name="cgstin" value="<%= result[0].cgstin %>" readonly>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="cgsttype" class="form-label" style="font-weight: bold;">Client GST Type</label>
+                            <input type="text" class="form-control" id="cgsttype" name="cgsttype" value="<%= result[0].cgst_type %>" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="crate" class="form-label" style="font-weight: bold;">Client Manufacturing Rate</label>
+                            <input type="number" class="form-control" id="crate" name="crate" value="<%= result[0].crate %>" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="creprate" class="form-label" style="font-weight: bold;">Client Repairing Rate</label>
+                            <input type="text" class="form-control" id="creprate" name="creprate" value="<%= result[0].creprate %>" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="invtype" class="form-label" style="font-weight: bold;">Invoice Type</label>
+                            <select name="invtype" id="invtype" class="form-control">
+                                <option value="dc">Delivery Challan</option>
+                                <option value="aiv">Approval Issue Voucher</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="mrate" class="form-label" style="font-weight: bold;">Gold Market Rate</label>
+                            <input type="text" class="form-control" id="mrate" name="mrate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="ivno" class="form-label" style="font-weight: bold;">Issue Voucher</label>
+                            <input type="text" class="form-control" id="ivno" name="ivno">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="ivdate" class="form-label" style="font-weight: bold;">Issue Voucher Date</label>
+                            <input type="text" class="form-control" id="ivdate" name="ivdate">
+                        </div>
+                    </div>  
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="gorn" class="form-label" style="font-weight: bold;">Gold Ornaments Weight</label>
+                            <input type="text" class="form-control" id="gorn" name="gorn">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="rep" class="form-label" style="font-weight: bold;">Repairing Ornaments Weight</label>
+                            <input type="text" class="form-control" id="rep" name="rep">
+                        </div>
+                    </div>    
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>  
+            </form>
+        </div>
+    </div>
+    <div class="container text-center">
+        <a href="/" class="btn btn-primary btn-lg">Go Home</a>
+        <a href="/newinv" class="btn btn-primary btn-lg">Go Back</a>
+    </div>
+
+
+
+<%- include('partials/footer') %>
