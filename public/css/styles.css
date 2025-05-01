@@ -58,3 +58,12 @@ body{
   .panel-icon.success-icon .fa-check-circle {
     color: #198754;
   }
+
+  .brand-logo-link {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.brand-logo-link:hover {
+    transform: scale(1.05);
+}
