@@ -1,24 +1,44 @@
 <%- include('partials/header') %>
-    <div class="container-fluid text-center" style="padding: 1rem;">
-        <h2>Admin Panel Options:</h2>
-        <div class="container-fluid text-center" style="padding: 1rem;">
-            <div class="row justify-content-md-center">
-                <div class="col-sm-3"  style="padding: 1rem;">
-                    <form action="/clients" method="get">
-                        <button type="submit" class="btn btn-primary btn-lg">Clients Panel</button>
-                    </form>
-                </div>
-                <div class="col-sm-3"  style="padding: 1rem;">
-                    <form action="/invoice" method="get">
-                        <button type="submit" class="btn btn-primary btn-lg">Invoice Panel</button>
-                    </form>
-                </div>
-            </div>
+<div class="container py-5 text-center">
+  <h2 class="text-center mb-5"><i class="fas fa-user-shield me-2"></i>Admin Controls</h2>
+  <br>
+  <div class="row g-4 justify-content-center">
+    <!-- Client Management Card -->
+    <div class="col-md-6 col-lg-4">
+      <div class="dashboard-card h-100">
+        <div class="card-body">
+          <div class="panel-icon mb-3">
+            <i class="fas fa-users fa-3x text-gold"></i>
+          </div>
+          <h4 class="card-title mb-3">Client Management</h4>
+          <p class="card-text">Manage client database and details</p>
+          <a href="/clients" class="btn btn-gold">
+            Access Panel <i class="fas fa-arrow-right ms-2"></i>
+          </a>
         </div>
-    </div>
-    <div class="container text-center">
-        <a href="/" class="btn btn-primary btn-lg">Go Home</a>
+      </div>
     </div>
 
-
+    <!-- Invoice Systems Card -->
+    <div class="col-md-6 col-lg-4">
+      <div class="dashboard-card h-100">
+        <div class="card-body">
+          <div class="panel-icon mb-3">
+            <i class="fas fa-file-invoice-dollar fa-3x text-gold"></i>
+          </div>
+          <h4 class="card-title mb-3">Invoice Systems</h4>
+          <p class="card-text">Manage invoices and billing records</p>
+          <a href="/invoice" class="btn btn-gold">
+            Access Panel <i class="fas fa-arrow-right ms-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="/home" class="btn btn-outline-secondary ms-2">
+        <i class="fas fa-home me-2"></i>Home
+      </a>
+    </div>
+  </div>
+</div>
 <%- include('partials/footer') %>

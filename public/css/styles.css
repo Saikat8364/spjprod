@@ -10,3 +10,51 @@
 body{
     font-family: 'Times New Roman', Times, serif;
 }
+
+.text-gold { color: #D4AF37; }
+.btn-gold {
+    background: #D4AF37;
+    border: none;
+    padding: 0.8rem 2rem;
+}
+
+.table-gold {
+    background: linear-gradient(45deg, #D4AF37, #b8992e);
+    color: white;
+  }
+  
+  .clickable-row {
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .clickable-row:hover {
+    transform: translateX(5px);
+    background-color: rgba(212, 175, 55, 0.1);
+  }
+  
+  /* Form Enhancements */
+  .dashboard-card .form-control {
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .dashboard-card .form-control:focus {
+    border-color: #D4AF37;
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+  }
+
+  .success-icon {
+    width: 100px;
+    height: 100px;
+    background: rgba(25, 135, 84, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .panel-icon.success-icon .fa-check-circle {
+    color: #198754;
+  }

@@ -1,27 +1,44 @@
 <%- include('partials/header') %>
-    <div class="container-fluid" style="padding: 1rem;">
-        <h2 style="text-align: center;">New Invoice</h2>
-        <div class="container-fluid" style="padding: 1rem;">
-            <form action="/chooseclientinv" method="post">
-                <div>
-                    <label for="client">Choose Client:</label>
-                        <select name="client" id="client" class="form-control">
-                            <% var i = result.length %>
-                            <% for (n=0; n<i; n++){ %>
-                                <option value="<%= result[n].clientsid %>"><%= result[n].cname %></option>
-                            <% } %>
-                        </select>
-                    <br>
-                    <br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
+<div class="container py-5">
+  <div class="dashboard-card p-4">
+    <h2 class="text-center mb-4"><i class="fas fa-file-circle-plus me-2"></i>Create New Invoice</h2>
+    
+    <!-- Original Form Structure Preserved -->
+    <form action="/chooseclientinv" method="post">
+      <div class="row justify-content-center mb-4">
+        <div class="col-md-8">
+          <label class="form-label fs-5">
+            <i class="fas fa-users text-gold me-2"></i>Select Client
+          </label>
+          <select name="client" class="form-select form-select-lg">
+            <% var i = result.length %>
+            <% for (n=0; n<i; n++){ %>
+              <option value="<%= result[n].clientsid %>">
+                <%= result[n].cname %>
+              </option>
+            <% } %>
+          </select>
         </div>
-    </div>
-    <div class="container text-center">
-        <a href="/" class="btn btn-primary btn-lg">Go Home</a>
-        <a href="/utility" class="btn btn-primary btn-lg">Go Back</a>
-    </div>
+      </div>
 
+      <!-- Original Submit Button Preserved -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-gold btn-lg px-5">
+          <i class="fas fa-arrow-right me-2"></i>Continue
+        </button>
+      </div>
+    </form>
+
+    <!-- Original Navigation Preserved -->
+    <div class="text-center mt-4">
+      <a href="/home" class="btn btn-outline-secondary">
+        <i class="fas fa-home me-2"></i>Go Home
+      </a>
+      <a href="/utility" class="btn btn-outline-secondary ms-2">
+        <i class="fas fa-arrow-left me-2"></i>Go Back
+      </a>
+    </div>
+  </div>
+</div>
 
 <%- include('partials/footer') %>

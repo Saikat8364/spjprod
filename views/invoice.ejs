@@ -1,25 +1,38 @@
 <%- include('partials/header') %>
-    <div class="container-fluid" style="padding: 1rem;">
-        <h2 class="text-center">Invoice Options</h2>
-        <div class="container">
-            <form action="/invop" method="post">
-                <label for="invop" class="form-label" style="font-weight: bold;">Choose Invoice Options</label>
-                <select name="invop" id="invop" class="form-control">
-                    <option value="bd">By Date</option>
-                    <option value="bdr">By Date Range</option>
-                    <option value="bc">By Client</option>
-                </select>
-                <br>
-                <br>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div>
-    <div class="container text-center">
-        <a href="/" class="btn btn-primary btn-lg">Go Home</a>
-        <a href="/admin" class="btn btn-primary btn-lg">Go Back</a>
-    </div>
+<div class="container py-5">
+  <div class="dashboard-card p-4">
+    <h2 class="text-center mb-4"><i class="fas fa-file-invoice me-2"></i>Invoice Operations</h2>
+    
+    <!-- Original Form Structure Preserved -->
+    <form action="/invop" method="post">
+      <div class="mb-4">
+        <label class="form-label fs-5">
+          <i class="fas fa-filter text-gold me-2"></i>Select Invoice Search Type
+        </label>
+        <select name="invop" class="form-select form-select-lg">
+          <option value="bd">By Date</option>
+          <option value="bdr">By Date Range</option>
+          <option value="bc">By Client</option>
+        </select>
+      </div>
 
+      <div class="text-center mt-5">
+        <button type="submit" class="btn btn-gold btn-lg px-5">
+          <i class="fas fa-arrow-right me-2"></i>Continue
+        </button>
+      </div>
+    </form>
 
+    <!-- Original Navigation Preserved -->
+    <div class="text-center mt-4">
+      <a href="/admin" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left me-2"></i>Back to Admin
+      </a>
+      <a href="/home" class="btn btn-outline-secondary ms-2">
+        <i class="fas fa-home me-2"></i>Home
+      </a>
+    </div>
+  </div>
+</div>
 
 <%- include('partials/footer') %>

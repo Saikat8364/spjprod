@@ -1,26 +1,45 @@
 <%- include('partials/header') %>
-    <div class="container-fluid" style="padding: 1rem;">
-        <div class="container">
-            <form action="/invop_bdr" method="post">
-                <h2 class="text-center" name="hd" id="hd" value="Invoice Options By Date Range">Invoice Options By Date Range</h2>
-                <br>
-                <br>
-                <br>
-                <label for="inpbdt" class="form-label" style="font-weight: bold;">Enter Beginnging Date</label>
-                <input class="form-control" type="date" id="inpbdt" name="inpbdt">
-                <label for="inpedt" class="form-label" style="font-weight: bold;">Enter Ending Date</label>
-                <input class="form-control" type="date" id="inpedt" name="inpedt">
-                <br>
-                <br>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+<div class="container py-5">
+  <div class="dashboard-card p-4">
+    <h2 class="text-center mb-4"><i class="fas fa-calendar-range me-2"></i>Invoices by Date Range</h2>
+    
+    <!-- Original Form Preserved -->
+    <form action="/invop_bdr" method="post">
+      <div class="mb-4">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label fs-5">
+              <i class="fas fa-calendar-start text-gold me-2"></i>Start Date
+            </label>
+            <input type="date" class="form-control form-control-lg" name="inpbdt">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fs-5">
+              <i class="fas fa-calendar-end text-gold me-2"></i>End Date
+            </label>
+            <input type="date" class="form-control form-control-lg" name="inpedt">
+          </div>
         </div>
-        
-    </div>
-    <div class="container text-center">
-        <a href="/" class="btn btn-primary btn-lg">Go Home</a>
-        <a href="/invoice" class="btn btn-primary btn-lg">Go Back</a>
-    </div>
+      </div>
 
+      <input type="hidden" name="hd" value="Invoice Options By Date Range">
 
+      <div class="text-center">
+        <button type="submit" class="btn btn-gold btn-lg px-5">
+          <i class="fas fa-search me-2"></i>Search Invoices
+        </button>
+      </div>
+    </form>
+
+    <!-- Original Navigation Preserved -->
+    <div class="text-center mt-4">
+      <a href="/invoice" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left me-2"></i>Back to Invoice Operations
+      </a>
+      <a href="/home" class="btn btn-outline-secondary ms-2">
+        <i class="fas fa-home me-2"></i>Home
+      </a>
+    </div>
+  </div>
+</div>
 <%- include('partials/footer') %>

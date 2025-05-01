@@ -1,24 +1,79 @@
 <%- include('partials/header') %>
-    <div class="container-fluid text-center" style="padding: 1rem;">
-        <h2>Choose the option to use:</h2>
-        <div class="container-fluid text-center" style="padding: 1rem;">
-            <div class="row justify-content-md-center">
-                <div class="col-sm-3"  style="padding: 1rem;">
-                    <form action="/admin" method="get">
-                        <label for="admin">Admin Panel to add/modify clients or view invoice lists</label><br>
-                        <button type="submit" class="btn btn-primary btn-lg" id="admin">Admin Panel</button>
-                    </form>
+<!-- Add Custom Dashboard Styles -->
+<style>
+    
+
+    .dashboard-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .dashboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+    }
+
+    .panel-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(212, 175, 55, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+    }
+
+    .stats-card {
+        background: rgba(0, 0, 0, 0.3);
+        border-left: 4px solid #D4AF37;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+<div class="container">
+    
+
+    <!-- Main Panels -->
+    <div class="row justify-content-center g-4">
+        <!-- Admin Panel Card -->
+        <div class="col-lg-5 col-md-6">
+            <div class="dashboard-card text-center p-4">
+                <div class="panel-icon">
+                    <i class="fas fa-user-shield fa-3x text-gold"></i>
                 </div>
-                <div class="col-sm-3"  style="padding: 1rem;">
-                    <form action="/utility" method="get">
-                        <label for="utility">Utility Panel to create or edit Invoices</label><br>
-                        <button type="submit" class="btn btn-primary btn-lg" id="utility">Utility Panel</button>
-                    </form>
+                <h3 class="mb-3">Admin Panel</h3>
+                <p class="text-muted">Manage clients and view invoice lists</p>
+                <form action="/admin" method="get">
+                    <button type="submit" class="btn btn-gold btn-lg">
+                        Access Admin Tools <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Utility Panel Card -->
+        <div class="col-lg-5 col-md-6">
+            <div class="dashboard-card text-center p-4">
+                <div class="panel-icon">
+                    <i class="fas fa-tools fa-3x text-gold"></i>
                 </div>
+                <h3 class="mb-3">Utility Panel</h3>
+                <p class="text-muted">Create and edit invoices</p>
+                <form action="/utility" method="get">
+                    <button type="submit" class="btn btn-gold btn-lg">
+                        Open Utilities <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </div>
 
-
-
+    <!-- Recent Activity -->
+    
+</div>
 <%- include('partials/footer') %>

@@ -7,7 +7,7 @@ const mysql=require("mysql");
 const session = require('express-session');
 const con = require('./db.js');
 const app=express();
-const ejsLint = require('ejs-lint');
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -103,18 +103,14 @@ var tens = Array("", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty","Seventy"
 }
 
 app.get("/", function(req,res){
-    if(req.session.loggedin == true){
-        res.redirect("/home");
-    }else{
-        res.redirect("/login");
-    }
+    res.render("index");
 });
 
 app.get("/login",function(req,res){
-    res.render("login");
+    res.render("login",{message:undefined});
 });
 app.get("/loginf",function(req,res){
-    res.render("loginf");
+    res.render("login",{message:"Please use Valid Credentials"});
 });
 
 app.post("/login", function(req,res){
@@ -133,37 +129,37 @@ app.post("/login", function(req,res){
 
 app.get("/home", function (req,res){
     if(req.session.loggedin){
-        res.render("homepage");
+        res.render("homepage",{un:req.session.username});
     }else{
-        res.render("loginreq");
+        res.render("login",{message:"Please Login to Continue"});
     }
 });
 app.get("/admin", function (req,res){
     if(req.session.loggedin){
-        res.render("admin");
+        res.render("admin",{un:req.session.username});
     }else{
-        res.render("loginreq");
+        res.render("login",{message:"Please Login to Continue"});
     }
 });
 app.get("/utility", function (req,res){
     if(req.session.loggedin){
-        res.render("utility");
+        res.render("utility",{un:req.session.username});
     }else{
-        res.render("loginreq");
+        res.render("login",{message:"Please Login to Continue"});
     }
 });
 app.get("/clients", function (req,res){
     if(req.session.loggedin){
-        res.render("clients");
+        res.render("clients",{un:req.session.username});
     }else{
-        res.render("loginreq");
+        res.render("login",{message:"Please Login to Continue"});
     }
 });
 app.get("/addclient", function (req,res){
     if(req.session.loggedin){
-        res.render("addclient");
+        res.render("addclient",{un:req.session.username});
     }else{
-        res.render("loginreq");
+        res.render("login",{message:"Please Login to Continue"});
     }
 });
 app.get("/modclient", function (req,res){
@@ -171,17 +167,17 @@ app.get("/modclient", function (req,res){
         var sql = "select clientsid,cname from clients;";
             con.query(sql, function(err, result){
             if (err) throw err;
-            res.render("modclient",{result:result});
+            res.render("modclient",{result:result,un:req.session.username});
         });
     }else{
-        res.render("loginreq");
+        res.render("login",{message:"Please Login to Continue"});
     }
 });
 app.get("/invoice", function (req,res){
     if(req.session.loggedin){
-        res.render("invoice");
+        res.render("invoice",{un:req.session.username});
     }else{
-        res.render("loginreq");
+        res.render("login",{message:"Please Login to Continue"});
     }
 });
 app.get("/newinv", function (req,res){
@@ -189,10 +185,10 @@ app.get("/newinv", function (req,res){
         var sql = "select clientsid,cname from clients;";
             con.query(sql, function(err, result){
             if (err) throw err;
-            res.render("newinv",{result:result});
+            res.render("newinv",{result:result,un:req.session.username});
         });
     }else{
-        res.render("loginreq");
+        res.render("login",{message:"Please Login to Continue"});
     }
 });
 app.get("/editinv", function (req,res){
@@ -200,10 +196,10 @@ app.get("/editinv", function (req,res){
         var sql = "select rid,cname from records order by rid desc;";
             con.query(sql, function(err, result){
             if (err) throw err;
-            res.render("editinv",{result:result});
+            res.render("editinv",{result:result,un:req.session.username});
         });
     }else{
-        res.render("loginreq");
+        res.render("login",{message:"Please Login to Continue"});
     }
 });
 
@@ -212,7 +208,7 @@ app.post("/addclient", function(req,res){
     var sql = "INSERT INTO `clients` (`cname`, `caddress`, `cgstin`, `crate`, `creprate`, `cgst_type`) VALUES ('"+req.body.cname+"', '"+req.body.caddr+"', '"+req.body.cgstin+"', '"+req.body.crate+"', '"+req.body.creprate+"', '"+req.body.cgsttype+"');";
     con.query(sql, function(err,result){
         if (err) throw err;
-        res.render("clientspost",{message:"Client Added Successfully"});
+        res.render("clientspost",{message:"Client Added Successfully",un:req.session.username});
     });
 });
 app.post("/chooseclient", function (req,res){
@@ -220,14 +216,14 @@ app.post("/chooseclient", function (req,res){
     var sql = "select * from clients where clientsid = '"+c_id+"';";
     con.query(sql, function(err, result){
         if (err) throw err;
-        res.render("editclientdetails",{result:result});
+        res.render("editclientdetails",{result:result,un:req.session.username});
     });
 });
 app.post("/postmodclient", function (req,res){
     var sql = "UPDATE `clients` SET `cname` = '"+req.body.cname+"',`caddress`='"+req.body.caddr+"',`cgstin` = '"+req.body.cgstin+"', `crate` = '"+req.body.crate+"', `creprate` = '"+req.body.creprate+"', `cgst_type` = '"+req.body.cgsttype+"'  WHERE (`clientsid` = '"+req.body.cid+"');";
     con.query(sql, function(err,result){
         if (err) throw err;
-        res.render("clientspost",{message:"Client Modified Successfully"});
+        res.render("clientspost",{message:"Client Modified Successfully",un:req.session.username});
     });
 });
 app.post("/chooseclientinv", function(req,res){
@@ -239,7 +235,7 @@ app.post("/chooseclientinv", function(req,res){
         con.query(sql2, function(err, items){
             if (err) throw err;
             var id = parseInt(items[0].rid)+1;
-            res.render("invdetails",{result:result,i:id});
+            res.render("invdetails",{result:result,i:id,un:req.session.username});
         });
     });
 });
@@ -281,7 +277,7 @@ app.post("/invdetailssubmit",function(req,res){
         m_total = parseFloat(parseFloat(mval)+parseFloat(m_igst)).toFixed(2);
         r_total = parseFloat(parseFloat(rval)+parseFloat(r_igst)).toFixed(2);
         net_total = parseFloat(m_total)+parseFloat(r_total);
-        net_total = parseFloat(net_total.toFixed(2));
+        net_total = parseFloat(net_total.toFixed(2)).toFixed(2);
     }else{
         m_sgst = parseFloat(mval*0.025).toFixed(2);
         m_cgst = parseFloat(mval*0.025).toFixed(2);
@@ -291,6 +287,7 @@ app.post("/invdetailssubmit",function(req,res){
         r_total = parseFloat(parseFloat(rval)+parseFloat(r_sgst)+parseFloat(r_cgst)).toFixed(2);
         net_total = parseFloat(m_total)+parseFloat(r_total);
         net_total = parseFloat(net_total.toFixed(2));
+        net_total = parseFloat(net_total.toFixed(2)).toFixed(2);
     }
     var in_words_rate = number2text(net_total);
     var mrate = parseFloat(req.body.mrate);
@@ -300,7 +297,6 @@ app.post("/invdetailssubmit",function(req,res){
     // var date=new Date().toLocaleDateString("en-GB");
     var date=new Date();
 	date=date.toISOString().slice(0,10);
-	
     var sql = "INSERT INTO `records` (`date`, `invtype`, `cid`, `cname`, `caddr`, `cgstin`, `cgsttype`, `crate`, `creprate`, `ivno`, `ivdate`, `gorn`, `rep`, `totwt`, `mval`, `m_igst`, `m_sgst`, `m_cgst`, `m_total`, `rval`, `r_igst`, `r_sgst`, `r_cgst`, `r_total`, `net_total`, `in_words_rate`, `mrate`, `mcost`, `in_words_price`) VALUES ('"+date+"', '"+req.body.invtype+"', '"+req.body.cid+"', '"+req.body.cname+"', '"+req.body.caddr+"', '"+req.body.cgstin+"', '"+req.body.cgsttype+"', '"+parseFloat(req.body.crate).toFixed(2)+"', '"+parseFloat(req.body.creprate).toFixed(2)+"', '"+req.body.ivno+"', '"+req.body.ivdate+"', '"+req.body.gorn+"', '"+req.body.rep+"', '"+totwt+"', '"+mval+"', '"+m_igst+"', '"+m_sgst+"', '"+m_cgst+"', '"+m_total+"', '"+rval+"', '"+r_igst+"', '"+r_sgst+"', '"+r_cgst+"', '"+r_total+"', '"+net_total+"', '"+in_words_rate+"', '"+req.body.mrate+"', '"+mcost+"', '"+in_words_price+"');";
     con.query(sql, function(err, result){
         if (err) throw "Error";
@@ -310,7 +306,7 @@ app.post("/invdetailssubmit",function(req,res){
         if (err) throw err;
         var d= result[0].date;
         d=d.toLocaleDateString("en-GB");
-        res.render("outputinv",{r:result,date:d});
+        res.render("outputinv",{r:result,date:d,un:req.session.username});
     });
 });
 app.post("/invdetailseditsubmit",function(req,res){
@@ -352,6 +348,7 @@ app.post("/invdetailseditsubmit",function(req,res){
         r_total = parseFloat(parseFloat(rval)+parseFloat(r_igst)).toFixed(2);
         net_total = parseFloat(m_total)+parseFloat(r_total);
         net_total = parseFloat(net_total.toFixed(2));
+        net_total = parseFloat(net_total.toFixed(2)).toFixed(2);
     }else{
         m_sgst = parseFloat(mval*0.025).toFixed(2);
         m_cgst = parseFloat(mval*0.025).toFixed(2);
@@ -361,6 +358,7 @@ app.post("/invdetailseditsubmit",function(req,res){
         r_total = parseFloat(parseFloat(rval)+parseFloat(r_sgst)+parseFloat(r_cgst)).toFixed(2);
         net_total = parseFloat(m_total)+parseFloat(r_total);
         net_total = parseFloat(net_total.toFixed(2));
+        net_total = parseFloat(net_total.toFixed(2)).toFixed(2);
     }
     var in_words_rate = number2text(net_total);
     var mrate = parseFloat(req.body.mrate);
@@ -370,7 +368,6 @@ app.post("/invdetailseditsubmit",function(req,res){
     // var date=new Date().toLocaleDateString("en-GB");
     var date=new Date();
 	date=date.toISOString().slice(0,10);
-
     var sql = "UPDATE `records` SET `date`='"+date+"',`invtype`='"+req.body.invtype+"',`cid`='"+req.body.cid+"',`cname`='"+req.body.cname+"',`caddr`='"+req.body.caddr+"',`cgstin`='"+req.body.cgstin+"',`cgsttype`='"+req.body.cgsttype+"',`crate`='"+parseFloat(req.body.crate).toFixed(2)+"',`creprate`='"+parseFloat(req.body.creprate).toFixed(2)+"',`ivno`='"+req.body.ivno+"',`ivdate`='"+req.body.ivdate+"',`gorn`='"+req.body.gorn+"',`rep`='"+req.body.rep+"', `totwt`='"+totwt+"', `mval`='"+mval+"', `m_igst`='"+m_igst+"', `m_sgst`='"+m_sgst+"', `m_cgst`='"+m_cgst+"',`m_total`='"+m_total+"',`rval`='"+rval+"',`r_igst`='"+r_igst+"',`r_sgst`='"+r_sgst+"',`r_cgst`='"+r_cgst+"',`r_total`='"+r_total+"',`net_total`='"+net_total+"',`in_words_rate`='"+in_words_rate+"',`mrate`='"+req.body.mrate+"',`mcost`='"+mcost+"',`in_words_price`='"+in_words_price+"' WHERE (`rid` = '"+req.body.rid+"');";
     con.query(sql, function(err, result){
         if (err) throw "Error";
@@ -380,29 +377,29 @@ app.post("/invdetailseditsubmit",function(req,res){
         if (err) throw err;
         var d= result[0].date;
         d=d.toLocaleDateString("en-GB");
-        res.render("outputinv",{r:result,date:d});
+        res.render("outputinv",{r:result,date:d,un:req.session.username});
     });
 });
 app.post("/editinvdetails", function(req,res){
     var sql = "select * from records where rid = "+req.body.billno+";";
     con.query(sql, function(err, result){
         if (err) throw err;
-        res.render("editinvdetails",{r:result});
+        res.render("editinvdetails",{r:result,un:req.session.username});
     });
 });
 
 app.post("/invop",function(req,res){
     if(req.body.invop=='bd'){
-        res.render("invop_bd");
+        res.render("invop_bd",{un:req.session.username});
     }
     if(req.body.invop=='bdr'){
-        res.render("invop_bdr");
+        res.render("invop_bdr",{un:req.session.username});
     }
     if(req.body.invop=='bc'){
         var sql = "select clientsid,cname from clients;"
         con.query(sql, function(err, result){
             if (err) throw err;
-            res.render("invop_bc",{r:result});
+            res.render("invop_bc",{r:result,un:req.session.username});
         });
     }
 });
@@ -414,7 +411,7 @@ app.post("/invop_bd", function(req,res){
     var sql = "select * from records where date ='"+date+"';";
     con.query(sql, function(err, result){
         if (err) throw err;
-        res.render("invoicelist",{r:result,hd:req.body.hd});
+        res.render("invoicelist",{r:result,hd:req.body.hd,un:req.session.username});
     });
 });
 app.post("/invop_bdr", function(req,res){
@@ -427,7 +424,7 @@ app.post("/invop_bdr", function(req,res){
     var sql = "select * from records where date between '"+bdate+"' and '"+edate+"';";
     con.query(sql, function(err, result){
         if (err) throw err;
-        res.render("invoicelist",{r:result,hd:req.body.hd});
+        res.render("invoicelist",{r:result,hd:req.body.hd,un:req.session.username});
     });
 });
 
@@ -435,7 +432,15 @@ app.post("/invop_bc", function(req,res){
     var sql ="select * from records where cid ='"+req.body.inpcl+"';";
     con.query(sql, function(err, result){
         if (err) throw err;
-        res.render("invoicelist",{r:result,hd:req.body.hd});
+        res.render("invoicelist",{r:result,hd:req.body.hd,un:req.session.username});
+    });
+});
+
+// Logout route
+app.post("/logout", function(req, res) {
+    req.session.destroy((err) => {
+        if(err) throw err;
+        res.redirect("/login");
     });
 });
 

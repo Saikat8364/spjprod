@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suresh Paul & Jewellers - Premium Gold Manufacturing</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-bg: #1a1a1a;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('/img/jewellery-banner.jpg') center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar {
+            background-color: var(--dark-bg)!important;
+            border-bottom: 2px solid var(--primary-gold);
+        }
+
+        .service-card, .process-step {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .gold-text {
+            color: var(--primary-gold);
+        }
+
+        .btn-gold {
+            background-color: var(--primary-gold);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+
+        .manufacturing-process {
+            background: url('/img/workshop-bg.jpg') center/cover;
+            position: relative;
+            color: white;
+        }
+        
+        .process-overlay {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5rem 0;
+        }
+
+        .process-step {
+            border-left: 3px solid var(--primary-gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .quality-badge {
+            width: 100px;
+            height: 100px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary-gold);
+            color: white;
+        }
+        .carousel-item {
+            height: 70vh;
+            min-height: 500px;
+        }
+
+        .carousel-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7);
+        }
+
+        .carousel-caption {
+            position: relative;
+            height: 100%;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .service-features p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0,0,0,0.3);
+            border-left: 3px solid var(--primary-gold);
+        }
+
+        .carousel-indicators [data-bs-target] {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 8px;
+            border: 2px solid white;
+            background: transparent;
+        }
+
+        .carousel-indicators .active {
+            background: var(--primary-gold);
+            border-color: var(--primary-gold);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/img/logo.png" alt="Logo" width="60" class="me-2">
+                Suresh Paul & Jewellers
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#process">Process</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#quality">Quality</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-gold ms-3" href="/login">Admin Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center text-white">
+            <h1 class="display-3 mb-4" style="font-family: 'Playfair Display', serif;">
+                Crafting Timeless <span class="gold-text">Golden</span> Elegance
+            </h1>
+            <p class="lead fs-4 mb-5">Premium jewellery manufacturing since 1985</p>
+            <a href="#services" class="btn-gold btn-lg">Explore Our Craft</a>
+        </div>
+    </section>
+
+    <!-- Services Carousel Section -->
+    <section id="services" class="py-5">
+        <div class="container-fluid px-0">
+            <h2 class="text-center mb-5 display-4">Our Expertise</h2>
+            
+            <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="2"></button>
+                </div>
+
+                <div class="carousel-inner">
+                    <!-- Service 1 -->
+                    <div class="carousel-item active">
+                        <div class="carousel-image" style="background-image: url('/img/service1.jpg');"></div>
+                        <div class="carousel-caption d-flex align-items-center">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h3 class="display-5 mb-4">Custom Jewelry Design</h3>
+                                        <div class="service-features mb-4">
+                                            <p><i class="fas fa-drafting-compass me-2"></i>CAD/CAM Technology</p>
+                                            <p><i class="fas fa-gem me-2"></i>3D Prototyping</p>
+                                            <p><i class="fas fa-check-circle me-2"></i>Client Collaboration</p>
+                                        </div>
+                                        <a href="#contact" class="btn btn-gold">Start Your Design</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="carousel-item">
+                        <div class="carousel-image" style="background-image: url('/img/service2.jpg');"></div>
+                        <div class="carousel-caption d-flex align-items-center">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h3 class="display-5 mb-4">Premium Manufacturing</h3>
+                                        <div class="service-features mb-4">
+                                            <p><i class="fas fa-industry me-2"></i>Lost-Wax Casting</p>
+                                            <p><i class="fas fa-tools me-2"></i>Hand Finishing</p>
+                                            <p><i class="fas fa-weight-hanging me-2"></i>Precision Weight Control</p>
+                                        </div>
+                                        <a href="#process" class="btn btn-gold">View Process</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manufacturing Process Section -->
+    <section id="process" class="manufacturing-process">
+        <div class="process-overlay">
+            <div class="container py-5">
+                <h2 class="text-center mb-5 display-4">Our Manufacturing Journey</h2>
+                <div class="row g-5">
+                    <div class="col-md-6">
+                        <div class="process-step">
+                            <h4 class="gold-text">1. Design & Prototyping</h4>
+                            <p>CAD/CAM technology combined with hand sketches</p>
+                            <ul>
+                                <li>3D modeling</li>
+                                <li>Wax prototyping</li>
+                                <li>Client approvals</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Add more process steps -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <h2 class="text-center mb-5 display-4">Precision Engineering</h2>
+            <div class="row g-4">
+                <div class="col-md-4 text-center">
+                    <div class="quality-badge">
+                        <i class="fas fa-microscope fa-2x text-white"></i>
+                    </div>
+                    <h5 class="my-3">Laser Welding</h5>
+                    <p>0.1mm precision joints</p>
+                </div>
+                <!-- Add more tech badges -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Assurance Section -->
+    <section id="quality" class="py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 class="display-5 mb-4">Quality Control</h2>
+                    <div class="accordion" id="qualityAccordion">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#hallmarking">
+                                    BIS Hallmarking
+                                </button>
+                            </h3>
+                            <div id="hallmarking" class="accordion-collapse collapse show" data-bs-parent="#qualityAccordion">
+                                <div class="accordion-body">
+                                    <p>All pieces carry 6-digit BIS hallmark:</p>
+                                    <ul>
+                                        <li>999/916 purity</li>
+                                        <li>Assay center mark</li>
+                                        <li>Year of marking</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="/img/hallmark-process.jpg" alt="Quality Check" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Contact Us</h5>
+                    <p>26/A Panchanantala Lane<br>Kolkata - 700012<br>Phone: +91 12345 67890</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/login" class="text-white text-decoration-none">Admin Portal</a></li>
+                        <li><a href="#privacy" class="text-white text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center mb-0">&copy; 2023 Suresh Paul & Jewellers. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Smooth Scroll JS -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        // Custom carousel settings
+        const servicesCarousel = new bootstrap.Carousel('#servicesCarousel', {
+            interval: 3000,
+            wrap: true,
+            touch: true
+        });
+
+        // Pause on hover
+        document.getElementById('servicesCarousel').addEventListener('mouseenter', () => {
+            servicesCarousel.pause();
+        });
+        document.getElementById('servicesCarousel').addEventListener('mouseleave', () => {
+            servicesCarousel.cycle();
+        });
+    </script>
+</body>
+</html>

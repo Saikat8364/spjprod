@@ -1,92 +1,155 @@
 <%- include('partials/header') %>
-    <div class="container-fluid" style="padding: 1rem;">
-        <h2 style="text-align: center;">Provide Invoice Details</h2>
-        <div class="container-fluid" style="padding: 1rem;">
-            <form action="/invdetailseditsubmit" method="post">
-                <div class="container" style="align-items: center;">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="rid" class="form-label" style="font-weight: bold;">Invoice ID</label>
-                            <input type="text" class="form-control" id="rid" name="rid" value="<%= r[0].rid %>" readonly>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="cid" class="form-label" style="font-weight: bold;">Client ID</label>
-                            <input type="text" class="form-control" id="cid" name="cid" value="<%= r[0].cid %>" readonly>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="cname" class="form-label" style="font-weight: bold;">Client Name</label>
-                            <input type="text" class="form-control" id="cname" name="cname" value="<%= r[0].cname %>" readonly>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="caddr" class="form-label" style="font-weight: bold;">Client Address</label>
-                        <input type="text" class="form-control" id="caddr" name="caddr" value="<%= r[0].caddr %>" readonly>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-9">
-                            <label for="cgstin" class="form-label" style="font-weight: bold;">Client GSTIN</label>
-                            <input type="text" class="form-control" id="cgstin" name="cgstin" value="<%= r[0].cgstin %>" readonly>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="cgsttype" class="form-label" style="font-weight: bold;">Client GST Type</label>
-                            <input type="text" class="form-control" id="cgsttype" name="cgsttype" value="<%= r[0].cgsttype %>" readonly>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="crate" class="form-label" style="font-weight: bold;">Client Manufacturing Rate</label>
-                            <input type="number" class="form-control" id="crate" name="crate" value="<%= r[0].crate %>" readonly>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="creprate" class="form-label" style="font-weight: bold;">Client Repairing Rate</label>
-                            <input type="text" class="form-control" id="creprate" name="creprate" value="<%= r[0].creprate %>" readonly>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="invtype" class="form-label" style="font-weight: bold;">Invoice Type</label>
-                            <select name="invtype" id="invtype" class="form-control">
-                                <option value="dc">Delivery Challan</option>
-                                <option value="aiv">Approval Issue Voucher</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="mrate" class="form-label" style="font-weight: bold;">Gold Market Rate</label>
-                            <input type="text" class="form-control" id="mrate" name="mrate" value="<%= r[0].mrate %>">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="ivno" class="form-label" style="font-weight: bold;">Issue Voucher</label>
-                            <input type="text" class="form-control" id="ivno" name="ivno" value="<%= r[0].ivno %>">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="ivdate" class="form-label" style="font-weight: bold;">Issue Voucher Date</label>
-                            <input type="text" class="form-control" id="ivdate" name="ivdate" value="<%= r[0].ivdate %>">
-                        </div>
-                    </div>  
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="gorn" class="form-label" style="font-weight: bold;">Gold Ornaments Weight</label>
-                            <input type="text" class="form-control" id="gorn" name="gorn" value="<%= r[0].gorn %>">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="rep" class="form-label" style="font-weight: bold;">Repairing Ornaments Weight</label>
-                            <input type="text" class="form-control" id="rep" name="rep" value="<%= r[0].rep %>">
-                        </div>
-                    </div>    
-                    <br>
-                    <br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>  
-            </form>
+<div class="container py-5">
+  <div class="dashboard-card p-4 shadow-lg">
+    <h2 class="text-center mb-4 text-gold"><i class="fas fa-file-pen me-2"></i>Edit Invoice Details</h2>
+    
+    <form action="/invdetailseditsubmit" method="post">
+      <!-- Client Info Section -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-3">
+          <label class="form-label fw-bold">
+            <i class="fas fa-id-badge text-gold me-2"></i>Invoice ID
+          </label>
+          <input type="text" class="form-control bg-light" 
+                 name="rid" value="<%= r[0].rid %>" readonly>
         </div>
-    </div>
-    <div class="container text-center">
-        <a href="/" class="btn btn-primary btn-lg">Go Home</a>
-        <a href="/editinv" class="btn btn-primary btn-lg">Go Back</a>
-    </div>
+        <div class="col-md-3">
+          <label class="form-label fw-bold">
+            <i class="fas fa-user-tag text-gold me-2"></i>Client ID
+          </label>
+          <input type="text" class="form-control bg-light" 
+                 name="cid" value="<%= r[0].cid %>" readonly>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-bold">
+            <i class="fas fa-building text-gold me-2"></i>Client Name
+          </label>
+          <input type="text" class="form-control bg-light" 
+                 name="cname" value="<%= r[0].cname %>" readonly>
+        </div>
+      </div>
 
+      <div class="row g-3 mb-4">
+        <div class="col-12">
+          <label class="form-label fw-bold">
+            <i class="fas fa-location-dot text-gold me-2"></i>Client Address
+          </label>
+          <input type="text" class="form-control bg-light" 
+                 name="caddr" value="<%= r[0].caddr %>" readonly>
+        </div>
+      </div>
 
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <label class="form-label fw-bold">
+            <i class="fas fa-address-card text-gold me-2"></i>GSTIN
+          </label>
+          <input type="text" class="form-control bg-light" 
+                 name="cgstin" value="<%= r[0].cgstin %>" readonly>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label fw-bold">
+            <i class="fas fa-industry text-gold me-2"></i>Manufacturing Rate
+          </label>
+          <div class="input-group">
+            <span class="input-group-text">₹</span>
+            <input type="text" class="form-control bg-light" 
+                   name="crate" value="<%= r[0].crate %>" readonly>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label fw-bold">
+            <i class="fas fa-tools text-gold me-2"></i>Repairing Rate
+          </label>
+          <div class="input-group">
+            <span class="input-group-text">₹</span>
+            <input type="text" class="form-control bg-light" 
+                   name="creprate" value="<%= r[0].creprate %>" readonly>
+          </div>
+        </div>
+      </div>
+
+      <!-- Editable Fields Section -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <label class="form-label fw-bold">
+            <i class="fas fa-file-lines text-gold me-2"></i>Invoice Type
+          </label>
+          <select name="invtype" class="form-select form-select-lg">
+            <option value="dc">Delivery Challan</option>
+            <option value="aiv">Approval Issue Voucher</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-bold">
+            <i class="fas fa-coins text-gold me-2"></i>Gold Market Rate
+          </label>
+          <div class="input-group">
+            <span class="input-group-text">₹</span>
+            <input type="number" class="form-control form-control-lg" 
+                   name="mrate" value="<%= r[0].mrate %>">
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <label class="form-label fw-bold">
+            <i class="fas fa-hashtag text-gold me-2"></i>Issue Voucher No
+          </label>
+          <input type="text" class="form-control form-control-lg" 
+                 name="ivno" value="<%= r[0].ivno %>">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-bold">
+            <i class="fas fa-calendar-days text-gold me-2"></i>Issue Date
+          </label>
+          <input type="text" class="form-control form-control-lg" 
+                 name="ivdate" value="<%= r[0].ivdate %>">
+        </div>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <label class="form-label fw-bold">
+            <i class="fas fa-weight-scale text-gold me-2"></i>Gold Ornaments Weight
+          </label>
+          <div class="input-group">
+            <span class="input-group-text">gms</span>
+            <input type="text" class="form-control form-control-lg" 
+                   name="gorn" value="<%= r[0].gorn %>">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-bold">
+            <i class="fas fa-screwdriver-wrench text-gold me-2"></i>Repairing Weight
+          </label>
+          <div class="input-group">
+            <span class="input-group-text">gms</span>
+            <input type="text" class="form-control form-control-lg" 
+                   name="rep" value="<%= r[0].rep %>">
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="text-center mt-5">
+        <button type="submit" class="btn btn-gold btn-lg px-5">
+          <i class="fas fa-save me-2"></i>Save Changes
+        </button>
+      </div>
+    </form>
+
+    <!-- Navigation -->
+    <div class="text-center mt-5">
+      <a href="/editinv" class="btn btn-outline-secondary btn-lg">
+        <i class="fas fa-arrow-left me-2"></i>Back to Invoice Selection
+      </a>
+      <a href="/home" class="btn btn-outline-secondary btn-lg ms-3">
+        <i class="fas fa-home me-2"></i>Go Home
+      </a>
+    </div>
+  </div>
+</div>
 
 <%- include('partials/footer') %>
