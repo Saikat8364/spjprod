@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery | Suresh Paul & Jewellers</title>
+
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+<body class="bg-light">
+
+  <!-- NAVBAR (same as home page) -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-gradient"> <!-- Changed from bg-dark -->
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <img src="/img/logo.png" alt="Logo" class="logo me-2" />
+            <span class="brand-title">Suresh Paul & Jewellers</span>
+          </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navMenu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="/#founder">Legacy</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#craft">Craft</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#bowbazar">Bowbazar</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/gallery">Gallery</a></li>
+          <li class="nav-item">
+            <a class="btn btn-gold ms-lg-3" href="/login">Admin Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- GALLERY HEADER -->
+  <header class="py-5 text-center text-white bg-dark border-bottom border-gold">
+    <div class="container">
+      <h1 class="mb-3">Gallery</h1>
+      <p class="lead">A glimpse into our handcrafted wrist ornaments & timeless creations.</p>
+    </div>
+  </header>
+
+  <!-- GALLERY GRID -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-3">
+        <% for (let i = 1; i <= 30; i++) { %>
+          <div class="col-6 col-sm-4 col-md-3 animate">
+            <div class="gallery-thumb rounded shadow-sm overflow-hidden">
+              <img 
+                src="/img/gallery/gallery-<%= i %>.jpg" 
+                alt="Gallery Image <%= i %>" 
+                class="img-fluid w-100"
+              />
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-4 bg-dark text-light text-center">
+    <div class="container">
+      <p class="mb-1">&copy; 2025 Suresh Paul &amp; Jewellers</p>
+      <small>26/A Panchanantala Lane, Kolkata – 700012</small>
+    </div>
+  </footer>
+  <button id="scrollTopBtn" class="btn btn-gold scroll-top-btn">
+    ↑
+    </button>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <script>
+    // GSAP scroll animation
+    gsap.utils.toArray('.animate').forEach(el => {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 85%' },
+        opacity: 0,
+        y: 40,
+        duration: 0.5,
+        ease: 'power2.out'
+      });
+    });
+    const scrollBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollBtn.style.display = "block";
+    } else {
+      scrollBtn.style.display = "none";
+    }
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  </script>
+  <!-- Scroll to Top Button -->
+    
+</body>
+</html>

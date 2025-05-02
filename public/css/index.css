@@ -1,0 +1,227 @@
+/* index.css */
+
+/* Palette */
+:root {
+  --gold: #bfa56a;
+  --dark-brown: #3e2723;
+  --ivory: #f9f5f0;
+  --text-dark: #2c2c2c;
+}
+
+/* Base */
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--text-dark);
+  background: var(--ivory);
+  scroll-behavior: smooth;
+  padding-top: 70px;
+}
+
+/* Navbar (dark) */
+.navbar {
+  background: #222 !important;
+  border-bottom: 2px solid var(--gold);
+}
+.navbar .logo {
+  width: 48px;
+  transition: transform 0.3s;
+}
+.navbar .logo:hover {
+  transform: scale(1.1);
+}
+
+/* Buttons */
+.btn-gold {
+  background: var(--gold);
+  color: #fff !important;
+  border-radius: 50px;
+  padding: 0.6rem 1.5rem;
+  transition: background 0.3s;
+}
+.btn-gold:hover {
+  background: #a5834f;
+}
+
+/* Hero */
+.hero-section {
+  position: relative;
+  height: 85vh;
+  background: url('/img/hero-bg.jpg') center/cover no-repeat fixed;
+}
+.hero-section .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.274);
+  z-index: 1;
+  pointer-events: none; /* 👈 this is the fix */
+}
+
+.hero-section h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+.hero-section h1 span {
+  color: var(--gold);
+}
+
+/* Section titles */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: var(--dark-brown);
+  margin-bottom: 1rem;
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background: var(--gold);
+  display: block;
+  margin: 0.5rem auto 0;
+}
+
+/* Carousel craft */
+#craftCarousel .carousel-item {
+  transition: transform 0.6s ease;
+}
+#craftCarousel img {
+  max-height: 300px;
+  object-fit: cover;
+}
+
+/* Gallery */
+.gallery-thumb {
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+.gallery-thumb:hover {
+  transform: scale(1.05);
+}
+
+/* Contact section */
+#contact p {
+  font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* Hero Logo Only */
+.hero-logo {
+  width: 25rem;    /* down from 60px */
+  height: auto;
+  transition: transform 0.3s;
+}
+.hero-logo:hover {
+  transform: scale(1.1);
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+/* Allow full image display, but keep slides consistent */
+.carousel-img {
+  max-height: 300px;       /* adjust up/down as you like */
+  width: auto;
+  margin: 0 auto;          /* center horizontally */
+  display: block;
+}
+/* Make carousel arrows black */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    /* remove the fixed attachment on smaller screens */
+    background-attachment: scroll !important;
+    /* ensure it still fills the area without pixelation */
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+}
+
+/* Prevent horizontal scroll globally */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+html {
+  scroll-padding-top: 80px;  /* Adjust based on your navbar's height */
+  scroll-behavior: smooth;   /* Optional: for a smooth scroll */
+}
+
+/* Scroll to Top Button */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 25px;
+  z-index: 999;
+  display: none;
+  padding: 0.6rem 1rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease;
+}
+
+/* Animated Gradient Background */
+.navbar-gradient {
+  background: linear-gradient(
+    90deg,
+    #3e2723 0%,       /* Dark Brown */
+    #bfa56a 50%,      /* Gold */
+    #3e2723 100%      /* Dark Brown */
+  );
+  background-size: 200% auto;
+  animation: gradientFlow 8s linear infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+.navbar-gradient::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: shine 5s infinite;
+}
+
+@keyframes shine {
+  100% { left: 200% }
+}
+
+/* Navbar Title Font */
+.navbar-brand .brand-title {
+  font-family: 'Playfair Display', serif; /* Luxury serif font */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(212, 175, 55, 0.3); /* Maintain gold shadow */
+}
+
+/* Optional: Add text animation */
+.navbar-brand:hover .brand-title {
+  text-shadow: 0 4px 12px rgba(212, 175, 55, 0.5);
+  transition: all 0.3s ease;
+}
