@@ -52,7 +52,7 @@ body {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.274);
-  z-index: 1;
+  z-index: -1;
   pointer-events: none; /* 👈 this is the fix */
 }
 
@@ -146,6 +146,14 @@ footer {
     /* ensure it still fills the area without pixelation */
     background-size: cover !important;
     background-position: center center !important;
+  }
+  .navbar-brand {
+    font-size: 1rem;
+  }
+  .hero-logo {
+    width: 21rem;    /* down from 60px */
+    height: auto;
+    transition: transform 0.3s;
   }
 }
 
