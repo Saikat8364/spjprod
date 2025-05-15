@@ -95,14 +95,14 @@
                     <thead>
                         <tr>
                             <th style="width: 65%;">
-                                <h4>Company Name:</h4>
-                                <h4><b>Suresh Paul and Jewellers</b></h4>
+                                <h5>Company Name:</h5>
+                                <h5><b>Suresh Paul and Jewellers</b></h5>
                                 Address: <br>26/A, Panchanantala Lane, Bowbazar,<br> Kolkata - 700012
                                 <br>
                                 GSTIN: 19ARSPP1209P1Z0
                             </th>
                             <th style="font-size: 1rem; width: 35%;">
-                                <h5><b>Invoice No.:SPJ-<%=r[0].rid%></b></h5>
+                                <h5><b>Invoice No.: SPJ-<%=r[0].rid%></b></h5>
                                 <h5><b>Invoice Date: <%=date%></b></h5>
                             </th>
                         </tr>
@@ -112,14 +112,34 @@
                     <thead>
                         <tr>
                             <th style="width: 65%;">
-                                <h4>Ship To:</h4>
-                                <h4><b><%= r[0].cname %></b></h4>
-                                Address: <br> <%= r[0].caddr %>
-                                <br>
-                                GSTIN: <%= r[0].cgstin %>
+                                <h5>Ship To:</h5>
+                                <h5><b><%= r[0].cname %></b></h5>
+                                <div style="font-size: 1.2rem;">
+                                    <% var str = r[0].caddr%>
+                                    <% var spl = str.split(",")%>
+                                    Address: <br>
+                                    <% for(var i=0;i<spl.length;i++){%>
+                                        <% if(i==0 || i%2==0){%>
+                                            <%if(i==(spl.length-1)){%>
+                                                <%= spl[i] %>
+                                            <%}else{%>
+                                                <%= spl[i] %>,
+                                            <%}%>                                            
+                                        <%}else{%>
+                                            <%if(i==(spl.length-1)){%>
+                                                <%= spl[i] %>
+                                            <%}else{%>
+                                                <%= spl[i] %>, <br>
+                                            <%}%>                                            
+                                        <%} %>
+                                    <%} %>
+                                    <br>
+                                    GSTIN: <%= r[0].cgstin %>
+                                </div>
+                                
                             </th>
                             <th style="font-size: 1rem; width: 35%;">
-                                <h5><b>Issue Voucher No.:<%=r[0].ivno%></b></h5>
+                                <h5><b>Issue Voucher No.: <%=r[0].ivno%></b></h5>
                                 <h5><b>Issue Voucher Date: <%=r[0].ivdate%></b></h5>
                             </th>
                         </tr>
@@ -192,7 +212,6 @@
                         <br><br>
                         <p>_____________________________________</p>
                         <p>Authorized Signatory</p>
-                        <p>Date: ________________</p>
                     </div>
                 </div>
             </div>
